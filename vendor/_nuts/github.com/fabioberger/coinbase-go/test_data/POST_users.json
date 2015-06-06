@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "user": {
+    "id": "501a3d22f8182b2754000011",
+    "name": "New User",
+    "email": "newuser@example.com",
+    "receive_address": "mpJKwdmJKYjiyfNo26eRp4j6qGwuUUnw9x"
+  }
+}

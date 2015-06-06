@@ -1,0 +1,9 @@
+[application]
+
+name = "new-house-on-the-block"
+version = "0.0.1"
+
+
+[dependencies]
+
+"github.com/fabioberger/coinbase-go" = "9567b0069b"
