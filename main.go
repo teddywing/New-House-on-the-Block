@@ -1,41 +1,39 @@
 package main
 
 import (
-	"com.teddywing/new-house-on-the-block/vendor/_nuts/github.com/fabioberger/coinbase-go"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/teddywing/new-house-on-the-block/purchase"
 )
 
-func sendMoney(from string, to string, amount string) (transaction_id string, err error) {
-	c := coinbase.ApiKeyClientSandbox(os.Getenv("COINBASE_KEY"), os.Getenv("COINBASE_SECRET"))
-
-	params := &coinbase.TransactionParams{
-		To:     to,
-		Amount: amount,
-		Notes:  "You just bought a house",
-	}
-
-	confirmation, err := c.SendMoney(params)
+func sendMoneyToSeller() {
+	transaction_id, err := purchase.SendMoney(os.Getenv("COINBASE_KEY"),
+		os.Getenv("COINBASE_SECRET"),
+		"n2Qd6da1jiFgij5SSncFKh7MoFN74GdUxv",
+		"0.0001")
 	if err != nil {
-		return "", err
+		log.Println(err)
 	} else {
-		fmt.Println(confirmation.Transaction.Status)
-		fmt.Println(confirmation.Transaction.Id)
+		fmt.Println(transaction_id)
+	}
+}
 
-		return confirmation.Transaction.Id, nil
+func sendTokenToBuyer() {
+	transaction_id, err := purchase.SendMoney(os.Getenv("SELLER_COINBASE_KEY"),
+		os.Getenv("SELLER_COINBASE_SECRET"),
+		"mqy3kT6aFHymTcvmdwZLKq1Svo2m6sUtzH",
+		"0.0001")
+	if err != nil {
+		log.Println(err)
+	} else {
+		fmt.Println(transaction_id)
 	}
 }
 
 func main() {
-	// transaction_id, err := sendMoney("TODO", "n2Qd6da1jiFgij5SSncFKh7MoFN74GdUxv", "0.0001")
-	// if err != nil {
-	// 	log.Println(err)
-	// } else {
-	// 	fmt.Println(transaction_id)
-	// }
-
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
 
