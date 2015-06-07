@@ -52,7 +52,7 @@ func main() {
 			log.Println(err)
 		}
 		
-		http.Redirect(w, r, "", 302)
+		http.Redirect(w, r, "http://testsite.perfectburpee.com/new-house-on-the-block-page6/", 302)
 	})
 
 	log.Println("Listening on port 3000")
