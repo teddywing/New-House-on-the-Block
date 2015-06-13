@@ -73,14 +73,16 @@ this case more Bitcoin) from seller to buyer.
 
 	Add to `.env` the API keys and secrets from 2 Coinbase accounts.
 
-2. Replace the Bitcoin addresses in [main.go](main.go) with the addresses of your
+2. `$ source .env`
+
+3. Replace the Bitcoin addresses in [main.go](main.go) with the addresses of your
 2 accounts.
 
-3. `$ go build`
+4. `$ go build`
 
-4. `$ ./new-house-on-the-block`
+5. `$ ./new-house-on-the-block`
 
-5. Visit `http://localhost:3000/buy/` to initiate the transaction.
+6. Visit `http://localhost:3000/buy/` to initiate the transaction.
 
 
 ## License
